@@ -1,4 +1,3 @@
-
 interface SaveToStorageParams<T> {
     item: string;
     object: T;
