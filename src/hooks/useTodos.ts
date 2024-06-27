@@ -1,11 +1,20 @@
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { type TodoId, Todo as TodoType, TodoTitle, type ListOfTodos, type UseTodos } from "../types"
 import { MOCK_TODOS } from "../consts"
+import { saveToStorage } from '../logic/storage.ts'
 
 export const useTodos = (): UseTodos  => {
-  const [todos, setTodos] = useState<ListOfTodos>(MOCK_TODOS)
+  const [todos, setTodos] = useState<ListOfTodos>( () => {
+      const todosFromStorage = window.localStorage.getItem('_todos_')
+      if (todosFromStorage) return JSON.parse(todosFromStorage)
+      return  MOCK_TODOS
+    }
+  )
 
+  useEffect(() => {
+    saveToStorage({ item: '_todos_', object: todos });
+  }, [todos]);
 
   const removeTodo = ({id}: TodoId) => {
     const newTodos = todos.filter(todo => todo.id !== id)

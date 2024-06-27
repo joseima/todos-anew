@@ -24,8 +24,6 @@ export interface UseTodos {
   }
 
 export interface UseFilters {
-    filteredTodos: ListOfTodos
-    filterTodos: (todos: ListOfTodos) => void;
     filterSelected: FilterValue;
     activeCount: number;
     completedCount: number;

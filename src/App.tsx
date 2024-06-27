@@ -1,11 +1,10 @@
-import { useState } from "react"
 import { Todos } from "./components/Todos"
 import { useTodos } from "./hooks/useTodos"
+import { useFilters } from "./hooks/useFilters"
 import { type TodoId, Todo as TodoType, FilterValue, TodoTitle, type ListOfTodos } from "./types"
 import { Footer } from "./components/Footer"
-import { TODO_FILTERS } from "./consts"
 import { Header } from "./components/Header"
-
+import { TODO_FILTERS } from "./consts"
 
 
 const App  = (): JSX.Element => {
@@ -17,13 +16,12 @@ const App  = (): JSX.Element => {
     addNewTodo: (title: TodoTitle) => void;
   } = useTodos();
 
-  const [filterSelected, setFilterSelected] = useState<FilterValue>(TODO_FILTERS.ALL)
-
-  const filteredTodos = todos.filter(todo => {
-    if (filterSelected === TODO_FILTERS.ACTIVE) return !todo.completed
-    if (filterSelected === TODO_FILTERS.COMPLETED) return todo.completed
-    return todo
-  })
+  const {activeCount, completedCount, changeFilter, filterSelected } : {
+    filterSelected: FilterValue;
+    activeCount: number;
+    completedCount: number;
+    changeFilter: (filter: FilterValue) => void;
+  } = useFilters();
 
   const handleRemove = ({id}: TodoId) => {
       removeTodo({id})
@@ -34,20 +32,21 @@ const App  = (): JSX.Element => {
   }
 
   const handleFilterChange = (filter: FilterValue) : void =>  {
-    setFilterSelected(filter)
+    changeFilter(filter)
   }
 
   const handleRemoveAllCompleted = (): void => {
       removeCompleted()
   }
 
-  const activeCount = todos.filter(todo => !todo.completed).length
-  const completedCount = todos.length - activeCount
-
-
   const handleAddTodo = ({title}: TodoTitle): void => {
     addNewTodo({title})
   }
+  const filteredTodos = todos.filter(todo => {
+    if (filterSelected === TODO_FILTERS.ACTIVE) return !todo.completed
+    if (filterSelected === TODO_FILTERS.COMPLETED) return todo.completed
+    return todo
+  })
 
   return (
       <main>

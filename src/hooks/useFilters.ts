@@ -9,16 +9,8 @@ import { TODO_FILTERS } from "../consts"
       todos: ListOfTodos;
     } = useTodos();
   
-    const filterTodos = (todos: ListOfTodos) => {
-      const newFilteredTodos= todos.filter(todo => {
-        if (filterSelected === TODO_FILTERS.ACTIVE) return !todo.completed
-        if (filterSelected === TODO_FILTERS.COMPLETED) return todo.completed
-        return todo
-      })  
-      return newFilteredTodos
-    }
-   const filteredTodos = filterTodos(todos)
 
+  
     const activeCount = todos.filter(todo => !todo.completed).length
     const completedCount = todos.length - activeCount
   
@@ -26,5 +18,5 @@ import { TODO_FILTERS } from "../consts"
       setFilterSelected(filter)
     }
   
-    return { filteredTodos, filterTodos, activeCount, completedCount, changeFilter, filterSelected }
+    return { activeCount, completedCount, changeFilter, filterSelected }
   }
