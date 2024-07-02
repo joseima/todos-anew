@@ -18,12 +18,15 @@ What we have here:
 
 <ul>
 <li>- Rect with Vite</li>
-<li>- ToDo MVC css impplemented (and just that)</li>
+<li>- ToDo MVC css impplemented (all design and look is on them)</li>
 <li>- Eslint</li>
 <li>- Typescript</li>
 <li>- Local storage manage hook</li>
 <li>- e2e and integrational testing via Playwright </li>
 </ul>
+
+
+<a href="https://main--tasks-agenda.netlify.app/">GIVE IT A TRY!</a>
 
 //--------------------------------------------------------////
 
