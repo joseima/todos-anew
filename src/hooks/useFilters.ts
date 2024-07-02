@@ -8,7 +8,6 @@ import { TODO_FILTERS } from "../consts"
     const {todos } : {
       todos: ListOfTodos;
     } = useTodos();
-  
 
   
     const activeCount = todos.filter(todo => !todo.completed).length

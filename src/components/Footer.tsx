@@ -28,6 +28,7 @@ export const Footer: React.FC<Props> = ({
                  {
         completedCount > 0 && (
           <button
+            title="clear-completed"
             className="clear-completed"
             onClick={onClearCompleted}>
               Remove completed

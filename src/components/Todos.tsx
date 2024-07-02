@@ -10,7 +10,7 @@ interface Props {
 export const Todos : React.FC<Props> = ({todos, onRemoveTodo, onToggleCompleteTodo}) => {
     return (
         <section className="todoapp">
-        <ul className="todo-list">
+        <ul className="todo-list" title="List of todos">
           {
             todos.map((todo) => {
                 return (
