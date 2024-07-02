@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react"
 import { type TodoId, Todo as TodoType, TodoTitle, type ListOfTodos, type UseTodos } from "../types"
 import { MOCK_TODOS } from "../consts"
-import { saveToStorage } from '../logic/storage.ts'
+import { saveToStorage } from '../logic/storage'
 
 export const useTodos = (): UseTodos  => {
   const [todos, setTodos] = useState<ListOfTodos>( () => {

@@ -19,7 +19,7 @@ export const Footer: React.FC<Props> = ({
     return (
         <footer className="footer">
             <span className="todo-count">
-                <strong>{activeCount} pending tasks</strong>
+                <strong>{activeCount} pending</strong>
             </span>
             <Filters 
                 filterSelected={filterSelected}
